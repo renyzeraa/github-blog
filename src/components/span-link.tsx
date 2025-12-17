@@ -11,7 +11,7 @@ interface SpanLinkProps {
 export function SpanLink({ href, title, Icon, text, className }: SpanLinkProps) {
     return (
         <a
-            href={href}
+            {...(href ? { href } : {})}
             target="_blank"
             rel="noopener noreferrer"
             title={title}
