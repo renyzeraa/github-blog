@@ -105,6 +105,8 @@ O aplicativo abrirá automaticamente em `http://localhost:3000`
 - [Design no Figma](https://www.figma.com/community/file/1138814951106121051)
 - [Desafio Original](https://efficient-sloth-d85.notion.site/Desafio-03-Github-Blog-13593953670346908462ddc648d42cf1#308a51ba725c4be19bc3fa565f378d04)
 
+<a href="https://github-blog-six-omega.vercel.app/"> Deploy 🚀 </a>
+
 ## 📝 Licença
 
 Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
