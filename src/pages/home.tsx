@@ -1,11 +1,12 @@
 import { api } from "@/lib/axios";
 import { useUserStore } from "@/store/user";
+import { formatUserResponse } from "@/utils/formater";
 import { SearchIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 
-type SearchInput = {
+type SearchHomeInput = {
     username: string,
 }
 
@@ -16,7 +17,7 @@ export function Home() {
         watch,
         formState: { errors, isLoading },
         setError
-    } = useForm<SearchInput>()
+    } = useForm<SearchHomeInput>()
 
     const { setUser } = useUserStore(useShallow((state) => ({
         setUser: state.setUser,
@@ -26,27 +27,11 @@ export function Home() {
 
     const navigate = useNavigate();
 
-    async function handleOnSubmitGithubUser({ username }: SearchInput) {
+    async function handleOnSubmitGithubUser({ username }: SearchHomeInput) {
         try {
             const response = await api.get(`/users/${username}`);
             if (response && response.status === 200) {
-                const { data } = response
-                setUser({
-                    avatarUrl: data.avatar_url,
-                    bio: data.bio,
-                    blog: data.blog,
-                    company: data.company,
-                    email: data.email,
-                    followers: data.followers,
-                    gistsUrl: data.gists_url,
-                    htmlUrl: data.html_url,
-                    id: data.id,
-                    location: data.location,
-                    login: data.login,
-                    name: data.name,
-                    publicRepos: data.public_repos,
-                    reposUrl: data.repos_url,
-                });
+                setUser(formatUserResponse(response.data));
                 navigate(`/${username}`);
             }
         } catch (error) {
@@ -59,7 +44,7 @@ export function Home() {
 
     return (
         <main className="w-full relative z-10">
-            <div className="bg-base-profile p-8 rounded-lg -mt-20 mx-auto flex flex-col gap-4 max-w-275">
+            <div className="bg-base-profile p-8 rounded-lg -mt-24 mx-auto flex flex-col gap-4 max-w-275">
                 <h1 className="font-bold text-3xl text-base-title text-center">Bem vindo ao Github Blog</h1>
                 <span className="block text-center text-base-subtitle">Aqui você encontrará os melhores posts sobre desenvolvimento e tecnologia do seu usuário favorito do github.</span>
                 <form className="p-2 flex flex-col  gap-2 justify-center w-full mx-auto" onSubmit={handleSubmit(handleOnSubmitGithubUser)}>
