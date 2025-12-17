@@ -20,8 +20,8 @@ export function User() {
     }, [user?.login]);
 
     return (
-        <main className="w-full relative z-10">
-            <div className="bg-base-profile p-8 rounded-lg -mt-24 mx-auto flex gap-8 max-w-275 relative">
+        <main className="w-full relative z-10 max-md:px-4">
+            <div className="bg-base-profile p-8 rounded-lg -mt-24 mx-auto flex gap-8 max-w-275 relative max-sm:flex-col max-sm:items-center">
                 <SpanLink
                     href={user?.htmlUrl || ''}
                     text="GITHUB"
@@ -30,12 +30,12 @@ export function User() {
                     className="absolute top-6 right-6"
                 />
                 {user?.avatarUrl && (
-                    <img width={148} height={148} src={user?.avatarUrl} alt={user?.name} className="rounded-lg overflow-hidden" />
+                    <img width={148} height={148} src={user?.avatarUrl} alt={user?.name} className="rounded-lg object-contain overflow-hidden" />
                 )}
                 <div className="flex flex-col">
                     <h1 className="font-bold text-3xl text-base-title">{user?.name}</h1>
                     <span className="block text-base-subtitle text-base mt-2 leading-[160%]">{user?.bio}</span>
-                    <div className="mt-auto flex gap-8">
+                    <div className="mt-auto flex gap-8 max-md:flex-col max-md:gap-2 max-md:mt-4">
                         {user?.login && (
                             <span className="flex items-center gap-1 text-base text-base-subtitle">
                                 <GithubIcon size={22} className="text-base-label" />

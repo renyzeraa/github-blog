@@ -43,7 +43,7 @@ export function Home() {
     }
 
     return (
-        <main className="w-full relative z-10">
+        <main className="w-full relative z-10 max-md:px-4">
             <div className="bg-base-profile p-8 rounded-lg -mt-24 mx-auto flex flex-col gap-4 max-w-275">
                 <h1 className="font-bold text-3xl text-base-title text-center">Bem vindo ao Github Blog</h1>
                 <span className="block text-center text-base-subtitle">Aqui você encontrará os melhores posts sobre desenvolvimento e tecnologia do seu usuário favorito do github.</span>

@@ -71,7 +71,7 @@ export function SearchIssues() {
                     />
                 </div>
             </header>
-            <div className="grid grid-cols-2 gap-4 my-10">
+            <div className="grid grid-cols-2 gap-4 my-10 max-md:grid-cols-1">
                 {user && issues.map((issue) => (
                     <CardIssue
                         issue={issue}

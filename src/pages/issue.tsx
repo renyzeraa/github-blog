@@ -20,7 +20,7 @@ export function Issue() {
     }
 
     return (
-        <main className="w-full relative z-10">
+        <main className="w-full relative z-10 max-md:px-4">
             <div className="bg-base-profile p-8 rounded-lg -mt-24 mx-auto flex flex-col gap-4 max-w-275">
                 <div className="flex justify-between items-center">
                     <Link to={`/${user}`}>
@@ -52,7 +52,7 @@ export function Issue() {
                             {issue.createdAt}
                         </span>
                     )}
-                    {issue?.comments && (
+                    {Boolean(issue?.comments) && (
                         <span className="flex items-center gap-1 text-base text-base-subtitle">
                             <MessageCircle size={22} className="text-base-label" />
                             {issue.comments} comentário{issue.comments > 1 && "s"}
